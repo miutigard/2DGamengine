@@ -8,7 +8,8 @@ public class GameRun {
 
     }
 
-    public void startGame() {
-
+    public static void startGame() {
+        Window window = Window.get();
+        window.run();
     }
 }
