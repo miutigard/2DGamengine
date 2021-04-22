@@ -22,7 +22,15 @@ Gamengine/Main.java
  Gamengine.Main
 Gamengine/Gamerun/KeyListener.java
  Gamengine.Gamerun.KeyListener
+Gamengine/LevelDesign/Scene.java
+ Gamengine.LevelDesign.Scene
+Gamengine/Gamerun/Time.java
+ Gamengine.Gamerun.Time
+Gamengine/LevelDesign/LevelScene.java
+ Gamengine.LevelDesign.LevelScene
 Gamengine/Gamerun/GameRun.java
  Gamengine.Gamerun.GameRun
 Gamengine/Gamerun/Window.java
  Gamengine.Gamerun.Window
+Gamengine/LevelDesign/LevelEditorScene.java
+ Gamengine.LevelDesign.LevelEditorScene

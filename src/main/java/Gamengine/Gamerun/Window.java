@@ -1,5 +1,8 @@
 package Gamengine.Gamerun;
 
+import Gamengine.LevelDesign.LevelEditorScene;
+import Gamengine.LevelDesign.LevelScene;
+import Gamengine.LevelDesign.Scene;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
@@ -19,9 +22,11 @@ public class Window {
     String title;
     private long glfwWindow;
 
-    private float r, g, b, a;
+    public float r, g, b, a;
 
     private static Window window = null;
+
+    private static Scene currentScene;
 
     private Window() {
         this.width = 1280;
@@ -31,6 +36,21 @@ public class Window {
         b = 1;
         g = 1;
         a = 1;
+    }
+
+    public static void changeScene(int newScene) {
+        switch (newScene) {
+            case 0:
+                currentScene = new LevelEditorScene();
+                //currentScene.init();
+                break;
+            case 1:
+                currentScene = new LevelScene();
+                break;
+            default:
+                assert false : "Unknown scene '" + newScene + "'";
+                break;
+        }
     }
 
     public static Window get() {
@@ -107,9 +127,15 @@ public class Window {
 
         // Make the window visible
         glfwShowWindow(glfwWindow);
+
+        Window.changeScene(0);
     }
 
     public void loop() {
+        float beginTime = Time.getTime();
+        float endTime = Time.getTime();
+        float dt = -1.0f;
+
         // This line is critical for LWJGL's interoperation with GLFW's
         // OpenGL context, or any context that is managed externally.
         // LWJGL detects the context that is current in the current thread,
@@ -131,9 +157,17 @@ public class Window {
             // invoked during this call.
             glfwPollEvents();
 
-            if (KeyListener.isKeyPressed(GLFW_KEY_SPACE)) {
-                System.out.println("Space");
+            glClearColor(r, g, b, a);
+            glClear(GL_COLOR_BUFFER_BIT);
+
+            if (dt >= 0) {
+                currentScene.update(dt);
             }
+
+            endTime = Time.getTime();
+            // Time for one frame
+            dt = endTime - beginTime;
+            beginTime = Time.getTime();
         }
     }
 }
