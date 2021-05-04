@@ -42,10 +42,11 @@ public class Window {
         switch (newScene) {
             case 0:
                 currentScene = new LevelEditorScene();
-                //currentScene.init();
+                currentScene.init();
                 break;
             case 1:
                 currentScene = new LevelScene();
+                currentScene.init();
                 break;
             default:
                 assert false : "Unknown scene '" + newScene + "'";
@@ -128,6 +129,13 @@ public class Window {
         // Make the window visible
         glfwShowWindow(glfwWindow);
 
+        // This line is critical for LWJGL's interoperation with GLFW's
+        // OpenGL context, or any context that is managed externally.
+        // LWJGL detects the context that is current in the current thread,
+        // creates the GLCapabilities instance and makes the OpenGL
+        // bindings available for use.
+        GL.createCapabilities();
+
         Window.changeScene(0);
     }
 
@@ -136,22 +144,13 @@ public class Window {
         float endTime = Time.getTime();
         float dt = -1.0f;
 
-        // This line is critical for LWJGL's interoperation with GLFW's
-        // OpenGL context, or any context that is managed externally.
-        // LWJGL detects the context that is current in the current thread,
-        // creates the GLCapabilities instance and makes the OpenGL
-        // bindings available for use.
-        GL.createCapabilities();
-
         // Set the clear color
-        glClearColor(r, g, b, a);
+        //glClearColor(r, g, b, a);
 
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         while ( !glfwWindowShouldClose(glfwWindow) ) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
-
-            glfwSwapBuffers(glfwWindow); // swap the color buffers
 
             // Poll for window events. The key callback above will only be
             // invoked during this call.
@@ -163,6 +162,8 @@ public class Window {
             if (dt >= 0) {
                 currentScene.update(dt);
             }
+
+            glfwSwapBuffers(glfwWindow); // swap the color buffers
 
             endTime = Time.getTime();
             // Time for one frame
