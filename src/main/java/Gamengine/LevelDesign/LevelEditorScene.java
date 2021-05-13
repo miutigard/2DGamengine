@@ -1,9 +1,8 @@
 package Gamengine.LevelDesign;
 
-import Gamengine.Gamerun.Camera;
-import Gamengine.Gamerun.KeyListener;
-import Gamengine.Gamerun.Time;
-import Gamengine.Gamerun.Window;
+import Gamengine.Components.FontRenderer;
+import Gamengine.Components.SpriteRenderer;
+import Gamengine.Gamerun.*;
 import Gamengine.Renderer.Shader;
 import Gamengine.Renderer.Texture;
 import org.joml.Vector2f;
@@ -19,39 +18,18 @@ import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 public class LevelEditorScene extends Scene {
 
-    private String vertexShaderSrc = "#version 330 core\n" +
-            "layout (location=0) in vec3 aPos;\n" +
-            "layout (location=1) in vec4 aColor;\n" +
-            "\n" +
-            "out vec4 fColor;\n" +
-            "\n" +
-            "void main()\n" +
-            "{\n" +
-            "    fColor = aColor;\n" +
-            "    gl_Position = vec4(aPos, 1.0);\n" +
-            "}";
-    private String fragmentShaderSrc = "#version 330 core\n" +
-            "\n" +
-            "in vec4 fColor;\n" +
-            "\n" +
-            "out vec4 color;\n" +
-            "\n" +
-            "void main()\n" +
-            "{\n" +
-            "    color = fColor;\n" +
-            "}";
-
-    private int vertexID, fragmentID, shaderProgram;
-
     private Shader defaultShader;
     private Texture testTexture;
 
+    GameObject testObject;
+    private boolean firstTime = false;
+
     private float[] vertexArray = {
         // position                     // color                            // UV Coordinates
-        100f,   0f,     0.0f,           1.0f,   0.0f,   0.0f,   1.0f,       1, 1,   //bottom right 0
-        0f,     100f,   0.0f,           0.0f,   1.0f,   0.0f,   1.0f,       0, 0,   //top left     1
-        100f,   100f,   0.0f,           1.0f,   0.0f,   1.0f,   1.0f,       1, 0,   // top right   2
-        0f,     0f,     0.0f,           1.0f,   1.0f,   0.0f,   1.0f,       0, 1   // bottom left 3
+        400f,   300f,     0.0f,           1.0f,   0.0f,   0.0f,   1.0f,       1, 1,   //bottom right 0
+        300f,     400f,   0.0f,           0.0f,   1.0f,   0.0f,   1.0f,       0, 0,   //top left     1
+        400f,   400f,   0.0f,           1.0f,   0.0f,   1.0f,   1.0f,       1, 0,   // top right   2
+        300f,     300f,     0.0f,           1.0f,   1.0f,   0.0f,   1.0f,       0, 1   // bottom left 3
 
     };
 
@@ -69,6 +47,12 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void init() {
+        System.out.println("Creating test object");
+        this.testObject = new GameObject("Test object");
+        this.testObject.addComponent(new SpriteRenderer());
+        this.testObject.addComponent(new FontRenderer());
+        this.addGameObjectToScene(this.testObject);
+
         this.camera = new Camera(new Vector2f());
         defaultShader = new Shader("assets/shaders/default.glsl");
         defaultShader.compile();
@@ -139,5 +123,17 @@ public class LevelEditorScene extends Scene {
         glBindVertexArray(0);
 
         defaultShader.detach();
+
+        if (!firstTime) {
+            System.out.println("Creating game object2");
+            GameObject go = new GameObject("Game test 2");
+            go.addComponent(new SpriteRenderer());
+            this.addGameObjectToScene(go);
+            firstTime = true;
+        }
+
+        for (GameObject go : this.gameObjects) {
+            go.update(dt);
+        }
     }
 }

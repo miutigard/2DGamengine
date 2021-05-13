@@ -4,8 +4,8 @@ Gamengine/Character/NPC.java
  Gamengine.Character.NPC
 Gamengine/MainTest.java
  Gamengine.MainTest
-Gamengine/Gamerun/GameRun.java
- Gamengine.Gamerun.GameRun
+Gamengine/Gamerun/Camera.java
+ Gamengine.Gamerun.Camera
 Gamengine/Main.java
  Gamengine.Main
 Gamengine/Item/Consumable.java
@@ -30,12 +30,20 @@ Gamengine/Renderer/Texture.java
  Gamengine.Renderer.Texture
 Gamengine/Renderer/Shader.java
  Gamengine.Renderer.Shader
-Gamengine/LevelDesign/Scene.java
- Gamengine.LevelDesign.Scene
 Gamengine/LevelDesign/LevelScene.java
  Gamengine.LevelDesign.LevelScene
-Gamengine/Gamerun/Camera.java
- Gamengine.Gamerun.Camera
+Gamengine/Gamerun/GameRun.java
+ Gamengine.Gamerun.GameRun
+Gamengine/Gamerun/GameObject.java
+ Gamengine.Gamerun.GameObject
+Gamengine/LevelDesign/Scene.java
+ Gamengine.LevelDesign.Scene
+Gamengine/Gamerun/Component.java
+ Gamengine.Gamerun.Component
+Gamengine/Components/SpriteRenderer.java
+ Gamengine.Components.SpriteRenderer
+Gamengine/Components/FontRenderer.java
+ Gamengine.Components.FontRenderer
 Gamengine/Gamerun/Window.java
  Gamengine.Gamerun.Window
 Gamengine/LevelDesign/LevelEditorScene.java
