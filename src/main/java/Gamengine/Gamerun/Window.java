@@ -29,8 +29,8 @@ public class Window {
     private static Scene currentScene;
 
     private Window() {
-        this.width = 1280;
-        this.height = 800;
+        this.width = 1920;
+        this.height = 1080;
         this.title = "Gamengine";
         r = 1;
         b = 1;
@@ -62,6 +62,10 @@ public class Window {
         }
 
         return Window.window;
+    }
+
+    public static Scene getScene() {
+        return get().currentScene;
     }
 
     public void run() {
@@ -100,7 +104,7 @@ public class Window {
         // Callbacks
         glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
         glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
-        glfwSetScrollCallback(glfwWindow, MouseListener::mouseScollCallback);
+        glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
         glfwSetKeyCallback(glfwWindow, KeyListener::keyCallback);
 
         // Get the thread stack and push a new frame
