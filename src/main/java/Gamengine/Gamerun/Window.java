@@ -14,6 +14,7 @@ import java.nio.IntBuffer;
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL20.GL_MAX_TEXTURE_IMAGE_UNITS;
 import static org.lwjgl.system.MemoryStack.stackPush;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
@@ -29,12 +30,12 @@ public class Window {
     private static Scene currentScene;
 
     private Window() {
-        this.width = 1920;
-        this.height = 1080;
+        this.width = 1280;
+        this.height = 800;
         this.title = "Gamengine";
-        r = 1;
-        b = 1;
-        g = 1;
+        r = 0;
+        b = 0;
+        g = 0;
         a = 1;
     }
 
@@ -146,8 +147,8 @@ public class Window {
     }
 
     public void loop() {
-        float beginTime = Time.getTime();
-        float endTime = Time.getTime();
+        float beginTime = (float)glfwGetTime();
+        float endTime = (float)glfwGetTime();
         float dt = -1.0f;
 
         // Set the clear color
@@ -171,10 +172,10 @@ public class Window {
 
             glfwSwapBuffers(glfwWindow); // swap the color buffers
 
-            endTime = Time.getTime();
+            endTime = (float)glfwGetTime();
             // Time for one frame
             dt = endTime - beginTime;
-            beginTime = Time.getTime();
+            beginTime = (float)glfwGetTime();
         }
     }
 }
