@@ -11,6 +11,9 @@ import static org.lwjgl.glfw.GLFW.*;
 
 public class LevelEditorScene extends Scene {
 
+    private GameObject obj1, obj2;
+    private Spritesheet sprites, sprites2;
+
     public LevelEditorScene() {
 
     }
@@ -21,43 +24,60 @@ public class LevelEditorScene extends Scene {
 
         this.camera = new Camera(new Vector2f(-250, -60));
 
-        Spritesheet sprites = AssetPool.getSpritesheet("assets/images/spritesheet3.png");
+        sprites = AssetPool.getSpritesheet("assets/images/spritesheet3.png");
+        sprites2 = AssetPool.getSpritesheet("assets/images/spritesheet.png");
 
-        GameObject obj1 = new GameObject("Object 1", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)));
-        obj1.addComponent(new SpriteRenderer(sprites.getSprite(140)));
+        obj1 = new GameObject("Object 1", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)));
+        obj1.addComponent(new SpriteRenderer(sprites.getSprite(0)));
         addGameObjectToScene(obj1);
 
-        /*GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(400, 100), new Vector2f(256, 256)));
-        obj2.addComponent(new SpriteRenderer(sprites.getSprite(93)));
+        obj2 = new GameObject("Object 2", new Transform(new Vector2f(400, 100), new Vector2f(256, 256)));
+        obj2.addComponent(new SpriteRenderer(sprites2.getSprite(0)));
         addGameObjectToScene(obj2);
 
-        GameObject obj3 = new GameObject("Object 3", new Transform(new Vector2f(100, 400), new Vector2f(256, 256)));
-        obj3.addComponent(new SpriteRenderer(sprites.getSprite(64)));
-        addGameObjectToScene(obj3);*/
     }
 
     private void loadResources() {
         AssetPool.getShader("assets/shaders/default.glsl");
 
         AssetPool.addSpritesheet("assets/images/spritesheet3.png",
-                new Spritesheet(AssetPool.getTexture("assets/images/spritesheet2.png"),
-                        64, 64, 160, 0));
+                new Spritesheet(AssetPool.getTexture("assets/images/spritesheet3.png"),
+                        64, 64, 151, 0));
+
+        AssetPool.addSpritesheet("assets/images/spritesheet.png",
+                new Spritesheet(AssetPool.getTexture("assets/images/spritesheet.png"),
+                        16, 16, 26, 0));
     }
+
+    private int spriteIndex = 0;
+    private float spriteFlipTime = 0.2f;
+    private float spriteFlipTimeLeft = 0.0f;
 
     @Override
     public void update(float dt) {
-        System.out.println("FPS: " + (1.0F / dt));
+        //System.out.println("FPS: " + (1.0F / dt));
 
         if (KeyListener.isKeyPressed(GLFW_KEY_RIGHT)) {
-            camera.position.x -= 300f *dt;
+            obj2.transform.position.x += 100 *dt;
         } else if (KeyListener.isKeyPressed(GLFW_KEY_LEFT)) {
-            camera.position.x += 300f *dt;
+            obj2.transform.position.x -= 100 *dt;
         }
 
         if (KeyListener.isKeyPressed(GLFW_KEY_UP)) {
-            camera.position.y -= 300f *dt;
+            obj2.transform.position.y += 100 *dt;
         } else if (KeyListener.isKeyPressed(GLFW_KEY_DOWN)) {
-            camera.position.y += 300f *dt;
+            obj2.transform.position.y -= 100 *dt;
+        }
+
+        spriteFlipTimeLeft -= dt;
+        if (spriteFlipTimeLeft <= 0) {
+            spriteFlipTimeLeft = spriteFlipTime;
+            spriteIndex++;
+            if (spriteIndex > 4) {
+                spriteIndex = 0;
+            }
+            obj1.getComponent(SpriteRenderer.class).setSprite(sprites.getSprite(spriteIndex));
+            obj2.getComponent(SpriteRenderer.class).setSprite(sprites2.getSprite(spriteIndex));
         }
 
         for (GameObject go : this.gameObjects) {
