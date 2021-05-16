@@ -29,13 +29,13 @@ public class Window {
 
     private static Scene currentScene;
 
-    private Window() {
-        this.width = 1280;
-        this.height = 800;
+    private Window(int width, int height) {
+        this.width = width;
+        this.height = height;
         this.title = "Gamengine";
-        r = 0.7f;
-        b = 0.2f;
-        g = 0.1f;
+        r = 1;
+        b = 1;
+        g = 1;
         a = 1;
     }
 
@@ -59,7 +59,7 @@ public class Window {
 
     public static Window get() {
         if (Window.window == null) {
-            Window.window = new Window();
+            Window.window = new Window(1280, 800);
         }
 
         return Window.window;
@@ -142,6 +142,9 @@ public class Window {
         // creates the GLCapabilities instance and makes the OpenGL
         // bindings available for use.
         GL.createCapabilities();
+
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
         Window.changeScene(0);
     }
