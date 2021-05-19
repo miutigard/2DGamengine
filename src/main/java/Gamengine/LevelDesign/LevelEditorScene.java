@@ -37,12 +37,6 @@ public class LevelEditorScene extends Scene {
         )));
         addGameObjectToScene(obj2);
 
-        GameObject obj3 = new GameObject("Object 3", new Transform(new Vector2f(600, 500), new Vector2f(229, 224)), 0);
-        obj3.addComponent(new SpriteRenderer(new Sprite(
-                AssetPool.getTexture("assets/images/finalboss.png")
-        )));
-        addGameObjectToScene(obj3);
-
         obj4 = new GameObject("Object 1", new Transform(new Vector2f(900, 120), new Vector2f(256, 256)), 1);
         obj4.addComponent(new SpriteRenderer(sprites.getSprite(140)));
         addGameObjectToScene(obj4);

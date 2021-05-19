@@ -3,6 +3,7 @@ package Gamengine.Gamerun;
 import Gamengine.LevelDesign.LevelEditorScene;
 import Gamengine.LevelDesign.LevelScene;
 import Gamengine.LevelDesign.Scene;
+import Gamengine.imGUI.imGuiGlfw;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
@@ -22,6 +23,7 @@ public class Window {
     int width, height;
     String title;
     private long glfwWindow;
+    private imGuiGlfw imGuiGlfw;
 
     public float r, g, b, a;
 
@@ -107,6 +109,10 @@ public class Window {
         glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
         glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
         glfwSetKeyCallback(glfwWindow, KeyListener::keyCallback);
+        glfwSetWindowSizeCallback(glfwWindow, (w, newWidth, newHeight) -> {
+            Window.setWidth(newWidth);
+            Window.setHeight(newHeight);
+        });
 
         // Get the thread stack and push a new frame
         try ( MemoryStack stack = stackPush() ) {
@@ -145,6 +151,8 @@ public class Window {
 
         glEnable(GL_BLEND);
         glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+        this.imGuiGlfw = new imGuiGlfw(glfwWindow);
+        imGuiGlfw.initImGui();
 
         Window.changeScene(0);
     }
@@ -173,6 +181,7 @@ public class Window {
                 currentScene.update(dt);
             }
 
+            this.imGuiGlfw.update(dt);
             glfwSwapBuffers(glfwWindow); // swap the color buffers
 
             endTime = (float)glfwGetTime();
@@ -181,4 +190,21 @@ public class Window {
             beginTime = (float)glfwGetTime();
         }
     }
+
+    public static int getWidth() {
+        return get().width;
+    }
+
+    public static int getHeight() {
+        return get().height;
+    }
+
+    public static void setWidth(int newWidth) {
+        get().width = newWidth;
+    }
+
+    public static void setHeight(int newHeight) {
+        get().height = newHeight;
+    }
+
 }
