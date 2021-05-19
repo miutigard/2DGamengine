@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Create character test
+        /*//Create character test
 
         PlayerCharacter Sebastian = new PlayerCharacter();
         Sebastian.setName("Sebastian");
@@ -63,6 +63,6 @@ public class Main {
 
         GameRun gameRun = new GameRun();
 
-        gameRun.startGame();
+        gameRun.startGame();*/
     }
 }

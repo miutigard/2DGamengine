@@ -155,7 +155,7 @@ public class Window {
         this.imGuiGlfw = new imGuiGlfw(glfwWindow);
         imGuiGlfw.initImGui();
 
-        Window.changeScene(1);
+        Window.changeScene(0);
     }
 
     public void loop() {

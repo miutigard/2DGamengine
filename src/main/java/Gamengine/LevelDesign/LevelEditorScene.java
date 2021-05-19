@@ -1,5 +1,6 @@
 package Gamengine.LevelDesign;
 
+import Gamengine.Character.PlayerCharacter;
 import Gamengine.Components.*;
 import Gamengine.Gamerun.*;
 import Gamengine.Renderer.DebugDraw;
@@ -35,26 +36,18 @@ public class LevelEditorScene extends Scene {
         sprites2 = AssetPool.getSpritesheet("assets/images/spritesheet2.png");
 
         if(levelLoaded) {
+            if (gameObjects.size() <= 0) return;
             this.currentGameObject = gameObjects.get(0);
             return;
         }
 
-        obj1 = new GameObject("Object 1", new Transform(new Vector2f(100, 100),
-                new Vector2f(128, 128)), 2);
-        SpriteRenderer obj1Sprite = new SpriteRenderer();
-        obj1Sprite.setSprite(sprites2.getSprite(0));
-        obj1.addComponent(obj1Sprite);
-        this.addGameObjectToScene(obj1);
-        this.currentGameObject = obj1;
-
-        /*GameObject obj2 = new GameObject("Object 2",
-                new Transform(new Vector2f(600, 300), new Vector2f(256, 256)), 3);
-        SpriteRenderer obj2SpriteRenderer = new SpriteRenderer();
-        Sprite obj2Sprite = new Sprite();
-        obj2Sprite.setTexture(AssetPool.getTexture("assets/images/blendImage2.png"));
-        obj2SpriteRenderer.setSprite(obj2Sprite);
-        obj2.addComponent(obj2SpriteRenderer);
-        this.addGameObjectToScene(obj2);*/
+        GameObject playerchar = new GameObject("Playerchar",
+                new Transform(new Vector2f(100, 100), new Vector2f(128, 128)), 3);
+        SpriteRenderer playercharSpriteRenderer = new SpriteRenderer();
+        playercharSpriteRenderer.setSprite(sprites2.getSprite(0));
+        playerchar.addComponent(playercharSpriteRenderer);
+        this.addGameObjectToScene(playerchar);
+        this.currentGameObject = playerchar;
 
     }
 
@@ -70,22 +63,20 @@ public class LevelEditorScene extends Scene {
                         64, 64, 151, 0));
     }
 
-
-    float angle = 0.0f;
     @Override
     public void update(float dt) {
         //System.out.println("FPS: " + (1.0F / dt));
         levelEditorTmp.update(dt);
 
         if (KeyListener.isKeyPressed(GLFW_KEY_D)) {
-            currentGameObject.transform.position.x += 100f * dt;
+            currentGameObject.transform.position.x += 300f * dt;
         } else if (KeyListener.isKeyPressed(GLFW_KEY_A)) {
-            currentGameObject.transform.position.x -= 100f * dt;
+            currentGameObject.transform.position.x -= 300f * dt;
         }
         if (KeyListener.isKeyPressed(GLFW_KEY_W)) {
-            currentGameObject.transform.position.y += 100f * dt;
+            currentGameObject.transform.position.y += 300f * dt;
         } else if (KeyListener.isKeyPressed(GLFW_KEY_S)) {
-            currentGameObject.transform.position.y -= 100f * dt;
+            currentGameObject.transform.position.y -= 300f * dt;
         }
 
         for (GameObject go : this.gameObjects) {
@@ -130,7 +121,6 @@ public class LevelEditorScene extends Scene {
                 ImGui.sameLine();
             }
         }
-
         ImGui.end();
     }
 
