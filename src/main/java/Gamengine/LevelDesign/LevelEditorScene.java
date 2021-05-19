@@ -4,6 +4,7 @@ import Gamengine.Components.Sprite;
 import Gamengine.Components.SpriteRenderer;
 import Gamengine.Components.Spritesheet;
 import Gamengine.Gamerun.*;
+import imgui.ImGui;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
@@ -27,21 +28,10 @@ public class LevelEditorScene extends Scene {
         sprites = AssetPool.getSpritesheet("assets/images/spritesheet2.png");
         Spritesheet sprites4 = AssetPool.getSpritesheet("assets/images/spritesheet4.png");
 
-        obj1 = new GameObject("Object 1", new Transform(new Vector2f(0, 120), new Vector2f(256, 256)), 2);
-        obj1.addComponent(new SpriteRenderer(sprites4.getSprite(0)));
+        obj1 = new GameObject("Object 1", new Transform(new Vector2f(600, 120), new Vector2f(256, 256)), 2);
+        obj1.addComponent(new SpriteRenderer(sprites.getSprite(149)));
         addGameObjectToScene(obj1);
-
-        GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(0, 0), new Vector2f(1280, 800)), 0);
-        obj2.addComponent(new SpriteRenderer(new Sprite(
-                AssetPool.getTexture("assets/images/windowsxp.jpg")
-        )));
-        addGameObjectToScene(obj2);
-
-        obj4 = new GameObject("Object 1", new Transform(new Vector2f(900, 120), new Vector2f(256, 256)), 1);
-        obj4.addComponent(new SpriteRenderer(sprites.getSprite(140)));
-        addGameObjectToScene(obj4);
-
-
+        this.currentGameObject = obj1;
     }
 
     private void loadResources() {
@@ -60,35 +50,18 @@ public class LevelEditorScene extends Scene {
     public void update(float dt) {
         //System.out.println("FPS: " + (1.0F / dt));
 
-        if (KeyListener.isKeyPressed(GLFW_KEY_D)) {
-            obj1.transform.position.x += 1000 *dt;
-        } else if (KeyListener.isKeyPressed(GLFW_KEY_A)) {
-            obj1.transform.position.x -= 1000 *dt;
-        }
-
-        if (KeyListener.isKeyPressed(GLFW_KEY_W)) {
-            obj1.transform.position.y += 1000 *dt;
-        } else if (KeyListener.isKeyPressed(GLFW_KEY_S)) {
-            obj1.transform.position.y -= 1000 *dt;
-        }
-
-        if (KeyListener.isKeyPressed(GLFW_KEY_RIGHT)) {
-            obj4.transform.position.x += 1000 *dt;
-        } else if (KeyListener.isKeyPressed(GLFW_KEY_LEFT)) {
-            obj4.transform.position.x -= 1000 *dt;
-        }
-
-        if (KeyListener.isKeyPressed(GLFW_KEY_UP)) {
-            obj4.transform.position.y += 1000 *dt;
-        } else if (KeyListener.isKeyPressed(GLFW_KEY_DOWN)) {
-            obj4.transform.position.y -= 1000 *dt;
-        }
-
-
         for (GameObject go : this.gameObjects) {
             go.update(dt);
         }
 
         this.renderer.render();
     }
+
+    @Override
+    public void imgui() {
+        ImGui.begin("Test window");
+        ImGui.text("Some random text");
+        ImGui.end();
+    }
+
 }

@@ -3,6 +3,7 @@ package Gamengine.LevelDesign;
 import Gamengine.Gamerun.Camera;
 import Gamengine.Gamerun.GameObject;
 import Gamengine.Renderer.Renderer;
+import imgui.ImGui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ public abstract class Scene {
     protected Camera camera;
     private boolean isRunning = false;
     protected List<GameObject> gameObjects = new ArrayList<>();
+    protected GameObject currentGameObject = null;
 
     public Scene() {
 
@@ -44,5 +46,18 @@ public abstract class Scene {
 
     public Camera camera() {
         return this.camera;
+    }
+
+    public void sceneImgui() {
+        if (currentGameObject != null) {
+            ImGui.begin("Inspector");
+            currentGameObject.imgui();
+            ImGui.end();
+        }
+        imgui();
+    }
+
+    public void imgui() {
+
     }
 }
