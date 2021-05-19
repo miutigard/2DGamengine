@@ -1,7 +1,5 @@
 package Gamengine.Components;
 
-import Gamengine.Gamerun.Component;
-
 public class FontRenderer extends Component {
 
     @Override

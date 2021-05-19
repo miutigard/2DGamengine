@@ -1,12 +1,11 @@
 package Gamengine.LevelDesign;
 
-import Gamengine.Components.Sprite;
-import Gamengine.Components.SpriteRenderer;
-import Gamengine.Components.Spritesheet;
+import Gamengine.Components.*;
 import Gamengine.Gamerun.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import imgui.ImGui;
+import imgui.ImVec2;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
@@ -18,6 +17,8 @@ public class LevelEditorScene extends Scene {
     private Spritesheet sprites;
     SpriteRenderer obj1Sprite;
 
+    MouseControls mouseControls = new MouseControls();
+
     public LevelEditorScene() {
 
     }
@@ -25,19 +26,19 @@ public class LevelEditorScene extends Scene {
     @Override
     public void init() {
         loadResources();
-
         this.camera = new Camera(new Vector2f());
+        sprites = AssetPool.getSpritesheet("assets/images/croppedpokemontileset.png");
         if(levelLoaded) {
+            this.currentGameObject = gameObjects.get(0);
             return;
         }
-
-        sprites = AssetPool.getSpritesheet("assets/images/spritesheet2.png");
 
         obj1 = new GameObject("Object 1", new Transform(new Vector2f(600, 100),
                 new Vector2f(256, 256)), 2);
         obj1Sprite = new SpriteRenderer();
         obj1Sprite.setColor(new Vector4f(1, 0, 0, 1));
         obj1.addComponent(obj1Sprite);
+        obj1.addComponent(new RigidBody());
         this.addGameObjectToScene(obj1);
         this.currentGameObject = obj1;
 
@@ -54,14 +55,15 @@ public class LevelEditorScene extends Scene {
     private void loadResources() {
         AssetPool.getShader("assets/shaders/default.glsl");
 
-        AssetPool.addSpritesheet("assets/images/spritesheet2.png",
-                new Spritesheet(AssetPool.getTexture("assets/images/spritesheet2.png"),
-                        64, 64, 151, 0));
+        AssetPool.addSpritesheet("assets/images/croppedpokemontileset.png",
+                new Spritesheet(AssetPool.getTexture("assets/images/croppedpokemontileset.png"),
+                        16, 16, 128, 0));
     }
 
     @Override
     public void update(float dt) {
         //System.out.println("FPS: " + (1.0F / dt));
+        mouseControls.update(dt);
 
         for (GameObject go : this.gameObjects) {
             go.update(dt);
@@ -73,7 +75,39 @@ public class LevelEditorScene extends Scene {
     @Override
     public void imgui() {
         ImGui.begin("Test window");
-        ImGui.text("Some random text");
+
+        ImVec2 windowPos = new ImVec2();
+        ImGui.getWindowPos(windowPos);
+        ImVec2 windowSize = new ImVec2();
+        ImGui.getWindowSize(windowSize);
+        ImVec2 itemSpacing = new ImVec2();
+        ImGui.getStyle().getItemSpacing(itemSpacing);
+
+        float windowX2 = windowPos.x + windowSize.x;
+        for (int i = 0; i < sprites.size(); i++) {
+            Sprite sprite = sprites.getSprite(i);
+            float spriteWidth = sprite.getWidth() * 2;
+            float spriteHeight = sprite.getHeight() * 2;
+            int id = sprite.getTexId();
+            Vector2f[] texCoords = sprite.getTexCoords();
+
+            ImGui.pushID(i);
+            if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+                GameObject object = Prefabs.generateSpriteObject(sprite, spriteWidth*2, spriteHeight*2);
+                mouseControls.pickupObject(object);
+            }
+            ImGui.popID();
+
+            ImVec2 lastButtonPos = new ImVec2();
+            ImGui.getItemRectMax(lastButtonPos);
+            float lastButtonX2 = lastButtonPos.x;
+            float nextButtonX2 = lastButtonX2 + itemSpacing.x + spriteWidth;
+
+            if (i + 1 < sprites.size() && nextButtonX2 < windowX2) {
+                ImGui.sameLine();
+            }
+        }
+
         ImGui.end();
     }
 

@@ -1,5 +1,6 @@
-package Gamengine.Gamerun;
+package Gamengine.Components;
 
+import Gamengine.Components.Component;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;

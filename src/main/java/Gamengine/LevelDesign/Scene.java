@@ -1,5 +1,7 @@
 package Gamengine.LevelDesign;
 
+import Gamengine.Components.Component;
+import Gamengine.Components.ComponentDeserializer;
 import Gamengine.Gamerun.*;
 import Gamengine.Renderer.Renderer;
 import com.google.gson.Gson;
@@ -97,10 +99,27 @@ public abstract class Scene {
         }
 
         if (!inFile.equals("")) {
+            int maxGoID = -1;
+            int maxCompID = -1;
             GameObject[] objs = gson.fromJson(inFile, GameObject[].class);
             for (int i = 0; i < objs.length; i++) {
                 addGameObjectToScene(objs[i]);
+
+                for (Component c : objs[i].getComps()) {
+                    if (c.getUid() > maxCompID) {
+                        maxCompID = c.getUid();
+                    }
+                }
+                if (objs[i].getUid() > maxGoID) {
+                    maxGoID = objs[i].getUid();
+                }
             }
+
+            maxGoID++;
+            maxCompID++;
+
+            GameObject.init(maxGoID);
+            Component.init(maxCompID);
             this.levelLoaded = true;
         }
     }

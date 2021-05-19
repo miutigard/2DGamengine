@@ -1,6 +1,5 @@
 package Gamengine.Components;
 
-import Gamengine.Gamerun.Component;
 import Gamengine.Gamerun.Transform;
 import Gamengine.Renderer.Texture;
 import imgui.ImGui;
@@ -13,7 +12,7 @@ public class SpriteRenderer extends Component {
     private Sprite sprite = new Sprite();
 
     private transient Transform lastTransform;
-    private transient boolean isDirty = false;
+    private transient boolean isDirty = true;
 
 //    public SpriteRenderer(Vector4f color) {
 //        this.color = color;
