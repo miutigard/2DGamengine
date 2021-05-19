@@ -167,6 +167,7 @@ public class Window {
 
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
+        currentScene.load();
         while ( !glfwWindowShouldClose(glfwWindow) ) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
 
@@ -189,6 +190,7 @@ public class Window {
             dt = endTime - beginTime;
             beginTime = (float)glfwGetTime();
         }
+        currentScene.save();
     }
 
     public static int getWidth() {
