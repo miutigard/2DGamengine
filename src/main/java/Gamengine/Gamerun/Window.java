@@ -3,6 +3,7 @@ package Gamengine.Gamerun;
 import Gamengine.LevelDesign.LevelEditorScene;
 import Gamengine.LevelDesign.LevelScene;
 import Gamengine.LevelDesign.Scene;
+import Gamengine.Renderer.DebugDraw;
 import Gamengine.imGUI.imGuiGlfw;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -154,7 +155,7 @@ public class Window {
         this.imGuiGlfw = new imGuiGlfw(glfwWindow);
         imGuiGlfw.initImGui();
 
-        Window.changeScene(0);
+        Window.changeScene(1);
     }
 
     public void loop() {
@@ -174,10 +175,13 @@ public class Window {
             // invoked during this call.
             glfwPollEvents();
 
+            DebugDraw.beginFrame();
+
             glClearColor(r, g, b, a);
             glClear(GL_COLOR_BUFFER_BIT);
 
             if (dt >= 0) {
+                DebugDraw.draw();
                 currentScene.update(dt);
             }
 

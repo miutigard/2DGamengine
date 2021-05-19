@@ -188,7 +188,6 @@ public class imGuiGlfw {
         // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
         ImGui.newFrame();
         currentScene.sceneImgui();
-        ImGui.showDemoWindow();
         ImGui.render();
 
         endFrame();

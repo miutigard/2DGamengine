@@ -73,4 +73,16 @@ public class Texture {
     public int getTexID() {
         return texID;
     }
+
+    public String getFilePath() {
+        return this.filepath;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) return false;
+        if (!(o instanceof Texture)) return false;
+        Texture oTexture = (Texture)o;
+        return oTexture.getWidth() == this.width && oTexture.getHeight() == this.height && oTexture.getTexID() == this.texID && oTexture.getFilePath().equals(this.filepath);
+    }
 }
