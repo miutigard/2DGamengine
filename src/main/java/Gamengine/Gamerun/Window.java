@@ -128,7 +128,7 @@ public class Window {
         this.imGuiGlfw = new imGuiGlfw(glfwWindow);
         imGuiGlfw.initImGui();
 
-        loadCurrentScene();
+        if (currentScene!=null) loadCurrentScene();
     }
 
     public void loop() {
