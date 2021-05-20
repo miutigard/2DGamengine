@@ -1,13 +1,13 @@
 package Gamengine.LevelDesign;
 
-import Gamengine.Components.Component;
-import Gamengine.Components.ComponentDeserializer;
-import Gamengine.Gamerun.*;
-import Gamengine.Renderer.Renderer;
+import Assets.Components.Component;
+import Assets.Components.ComponentDeserializer;
+import Assets.GamerunTools.Camera;
+import Assets.GamerunTools.GameObject;
+import Assets.GamerunTools.GameObjectDeserializer;
+import Assets.Renderer.Renderer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import imgui.ImGui;
-import org.joml.Vector2f;
 
 import java.io.FileWriter;
 import java.io.IOException;

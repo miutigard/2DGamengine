@@ -1,8 +1,8 @@
 package Gamengine.LevelDesign;
 
+import Assets.GamerunTools.*;
 import Gamengine.Character.PlayerCharacter;
-import Gamengine.Components.*;
-import Gamengine.Gamerun.*;
+import Assets.Components.*;
 import imgui.ImGui;
 import imgui.ImVec2;
 import org.joml.Vector2f;
@@ -11,7 +11,7 @@ import static org.lwjgl.glfw.GLFW.*;
 
 public class LevelEditorScene extends Scene {
 
-    private Spritesheet sprites;
+    private Spritesheet spritesheet;
 
     GameObject grid = new GameObject("Grid", new Transform(new Vector2f()), 0);
 
@@ -25,7 +25,7 @@ public class LevelEditorScene extends Scene {
 
         // loading the spritesheet and shader resources
         loadResources();
-        sprites = AssetPool.getSpritesheet("assets/images/croppedpokemontileset.png");
+        spritesheet = Assets.getSpritesheet("assets/images/croppedpokemontileset.png");
 
         // creating the camera
         this.camera = new Camera(new Vector2f());
@@ -46,14 +46,14 @@ public class LevelEditorScene extends Scene {
     }
 
     private void loadResources() {
-        AssetPool.getShader("assets/shaders/default.glsl");
+        Assets.getShader("assets/shaders/default.glsl");
 
-        AssetPool.addSpritesheet("assets/images/croppedpokemontileset.png",
-                new Spritesheet(AssetPool.getTexture("assets/images/croppedpokemontileset.png"),
+        Assets.addSpritesheet("assets/images/croppedpokemontileset.png",
+                new Spritesheet(Assets.getTexture("assets/images/croppedpokemontileset.png"),
                         16, 16, 128, 0));
 
-        AssetPool.addSpritesheet("assets/images/testImage.png",
-                new Spritesheet(AssetPool.getTexture("assets/images/testImage.png"),
+        Assets.addSpritesheet("assets/images/testImage.png",
+                new Spritesheet(Assets.getTexture("assets/images/testImage.png"),
                         32, 32, 1, 0));
     }
 
@@ -72,13 +72,6 @@ public class LevelEditorScene extends Scene {
         } else if (KeyListener.isKeyPressed(GLFW_KEY_S)) {
             currentGameObject.transform.position.y -= 300f * dt;
         }
-
-
-        if (KeyListener.isKeyPressed(GLFW_KEY_1)) {
-            save();
-            Window.changeScene(1);
-        }
-
 
         for (GameObject go : this.gameObjects) {
             go.update(dt);
@@ -102,8 +95,8 @@ public class LevelEditorScene extends Scene {
         ImGui.getStyle().getItemSpacing(itemSpacing);
 
         float windowX2 = windowPos.x + windowSize.x;
-        for (int i = 0; i < sprites.size(); i++) {          //sprites is the spritesheet you want to use
-            Sprite sprite = sprites.getSprite(i);
+        for (int i = 0; i < spritesheet.size(); i++) {          //sprites is the spritesheet you want to use
+            Sprite sprite = spritesheet.getSprite(i);
             float spriteWidth = sprite.getWidth() * 2;     //the width of the icons in the widget
             float spriteHeight = sprite.getHeight() * 2;    //the height of the icons in the widget
             int id = sprite.getTexId();
@@ -121,7 +114,7 @@ public class LevelEditorScene extends Scene {
             float lastButtonX2 = lastButtonPos.x;
             float nextButtonX2 = lastButtonX2 + itemSpacing.x + spriteWidth;
 
-            if (i + 1 < sprites.size() && nextButtonX2 < windowX2) {
+            if (i + 1 < spritesheet.size() && nextButtonX2 < windowX2) {
                 ImGui.sameLine();
             }
         }

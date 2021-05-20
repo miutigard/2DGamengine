@@ -4,13 +4,13 @@
     "name": "Grid",
     "components": [
       {
-        "type": "Gamengine.Components.MouseControls",
+        "type": "Assets.Components.MouseControls",
         "properties": {
           "uid": 0
         }
       },
       {
-        "type": "Gamengine.Components.GridLines",
+        "type": "Assets.Components.GridLines",
         "properties": {
           "uid": 1
         }
@@ -33,7 +33,7 @@
     "name": "Player character",
     "components": [
       {
-        "type": "Gamengine.Components.SpriteRenderer",
+        "type": "Assets.Components.SpriteRenderer",
         "properties": {
           "color": {
             "x": 1.0,
@@ -75,8 +75,8 @@
     ],
     "transform": {
       "position": {
-        "x": 420.04242,
-        "y": 566.467
+        "x": 72.534294,
+        "y": 602.0315
       },
       "scale": {
         "x": 128.0,
@@ -90,7 +90,7 @@
     "name": "Sprite_Object_Gen",
     "components": [
       {
-        "type": "Gamengine.Components.SpriteRenderer",
+        "type": "Assets.Components.SpriteRenderer",
         "properties": {
           "color": {
             "x": 1.0,
@@ -109,20 +109,20 @@
             },
             "texCoords": [
               {
-                "x": 0.1875,
-                "y": 0.625
-              },
-              {
-                "x": 0.1875,
+                "x": 0.3125,
                 "y": 0.5
               },
               {
-                "x": 0.125,
-                "y": 0.5
+                "x": 0.3125,
+                "y": 0.375
               },
               {
-                "x": 0.125,
-                "y": 0.625
+                "x": 0.25,
+                "y": 0.375
+              },
+              {
+                "x": 0.25,
+                "y": 0.5
               }
             ]
           },
@@ -132,8 +132,8 @@
     ],
     "transform": {
       "position": {
-        "x": 672.0,
-        "y": 544.0
+        "x": 512.0,
+        "y": 576.0
       },
       "scale": {
         "x": 64.0,
@@ -147,7 +147,7 @@
     "name": "Sprite_Object_Gen",
     "components": [
       {
-        "type": "Gamengine.Components.SpriteRenderer",
+        "type": "Assets.Components.SpriteRenderer",
         "properties": {
           "color": {
             "x": 1.0,
@@ -166,20 +166,20 @@
             },
             "texCoords": [
               {
-                "x": 0.1875,
-                "y": 0.625
-              },
-              {
-                "x": 0.1875,
+                "x": 0.375,
                 "y": 0.5
               },
               {
-                "x": 0.125,
-                "y": 0.5
+                "x": 0.375,
+                "y": 0.375
               },
               {
-                "x": 0.125,
-                "y": 0.625
+                "x": 0.3125,
+                "y": 0.375
+              },
+              {
+                "x": 0.3125,
+                "y": 0.5
               }
             ]
           },
@@ -189,8 +189,8 @@
     ],
     "transform": {
       "position": {
-        "x": 640.0,
-        "y": 512.0
+        "x": 576.0,
+        "y": 576.0
       },
       "scale": {
         "x": 64.0,
@@ -204,7 +204,7 @@
     "name": "Sprite_Object_Gen",
     "components": [
       {
-        "type": "Gamengine.Components.SpriteRenderer",
+        "type": "Assets.Components.SpriteRenderer",
         "properties": {
           "color": {
             "x": 1.0,
@@ -223,20 +223,20 @@
             },
             "texCoords": [
               {
-                "x": 0.1875,
-                "y": 0.625
+                "x": 0.5,
+                "y": 1.0
               },
               {
-                "x": 0.1875,
-                "y": 0.5
+                "x": 0.5,
+                "y": 0.875
               },
               {
-                "x": 0.125,
-                "y": 0.5
+                "x": 0.4375,
+                "y": 0.875
               },
               {
-                "x": 0.125,
-                "y": 0.625
+                "x": 0.4375,
+                "y": 1.0
               }
             ]
           },
@@ -246,8 +246,8 @@
     ],
     "transform": {
       "position": {
-        "x": 640.0,
-        "y": 576.0
+        "x": 576.0,
+        "y": 768.0
       },
       "scale": {
         "x": 64.0,
@@ -261,7 +261,7 @@
     "name": "Sprite_Object_Gen",
     "components": [
       {
-        "type": "Gamengine.Components.SpriteRenderer",
+        "type": "Assets.Components.SpriteRenderer",
         "properties": {
           "color": {
             "x": 1.0,
@@ -280,20 +280,20 @@
             },
             "texCoords": [
               {
-                "x": 0.1875,
-                "y": 0.625
+                "x": 0.4375,
+                "y": 1.0
               },
               {
-                "x": 0.1875,
-                "y": 0.5
+                "x": 0.4375,
+                "y": 0.875
               },
               {
-                "x": 0.125,
-                "y": 0.5
+                "x": 0.375,
+                "y": 0.875
               },
               {
-                "x": 0.125,
-                "y": 0.625
+                "x": 0.375,
+                "y": 1.0
               }
             ]
           },
@@ -303,8 +303,8 @@
     ],
     "transform": {
       "position": {
-        "x": 704.0,
-        "y": 576.0
+        "x": 512.0,
+        "y": 768.0
       },
       "scale": {
         "x": 64.0,
@@ -318,7 +318,7 @@
     "name": "Sprite_Object_Gen",
     "components": [
       {
-        "type": "Gamengine.Components.SpriteRenderer",
+        "type": "Assets.Components.SpriteRenderer",
         "properties": {
           "color": {
             "x": 1.0,
@@ -337,20 +337,20 @@
             },
             "texCoords": [
               {
-                "x": 0.25,
-                "y": 0.625
+                "x": 0.4375,
+                "y": 0.875
               },
               {
-                "x": 0.25,
-                "y": 0.5
+                "x": 0.4375,
+                "y": 0.75
               },
               {
-                "x": 0.1875,
-                "y": 0.5
+                "x": 0.375,
+                "y": 0.75
               },
               {
-                "x": 0.1875,
-                "y": 0.625
+                "x": 0.375,
+                "y": 0.875
               }
             ]
           },
@@ -360,8 +360,8 @@
     ],
     "transform": {
       "position": {
-        "x": 704.0,
-        "y": 512.0
+        "x": 512.0,
+        "y": 704.0
       },
       "scale": {
         "x": 64.0,
@@ -375,7 +375,7 @@
     "name": "Sprite_Object_Gen",
     "components": [
       {
-        "type": "Gamengine.Components.SpriteRenderer",
+        "type": "Assets.Components.SpriteRenderer",
         "properties": {
           "color": {
             "x": 1.0,
@@ -394,20 +394,20 @@
             },
             "texCoords": [
               {
-                "x": 0.3125,
-                "y": 0.125
+                "x": 0.5,
+                "y": 0.875
               },
               {
-                "x": 0.3125,
-                "y": 0.0
+                "x": 0.5,
+                "y": 0.75
               },
               {
-                "x": 0.25,
-                "y": 0.0
+                "x": 0.4375,
+                "y": 0.75
               },
               {
-                "x": 0.25,
-                "y": 0.125
+                "x": 0.4375,
+                "y": 0.875
               }
             ]
           },
@@ -417,8 +417,8 @@
     ],
     "transform": {
       "position": {
-        "x": 640.0,
-        "y": 384.0
+        "x": 576.0,
+        "y": 704.0
       },
       "scale": {
         "x": 64.0,
@@ -432,7 +432,7 @@
     "name": "Sprite_Object_Gen",
     "components": [
       {
-        "type": "Gamengine.Components.SpriteRenderer",
+        "type": "Assets.Components.SpriteRenderer",
         "properties": {
           "color": {
             "x": 1.0,
@@ -451,24 +451,252 @@
             },
             "texCoords": [
               {
-                "x": 0.3125,
-                "y": 0.25
+                "x": 0.125,
+                "y": 0.75
               },
               {
-                "x": 0.3125,
-                "y": 0.125
+                "x": 0.125,
+                "y": 0.625
               },
               {
-                "x": 0.25,
-                "y": 0.125
+                "x": 0.0625,
+                "y": 0.625
               },
               {
-                "x": 0.25,
-                "y": 0.25
+                "x": 0.0625,
+                "y": 0.75
               }
             ]
           },
           "uid": 9
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 448.0,
+        "y": 768.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 10,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "Assets.Components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/croppedpokemontileset.png",
+              "texID": 2,
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.0625,
+                "y": 0.75
+              },
+              {
+                "x": 0.0625,
+                "y": 0.625
+              },
+              {
+                "x": 0.0,
+                "y": 0.625
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              }
+            ]
+          },
+          "uid": 10
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 384.0,
+        "y": 768.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 11,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "Assets.Components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/croppedpokemontileset.png",
+              "texID": 2,
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.0625,
+                "y": 0.625
+              },
+              {
+                "x": 0.0625,
+                "y": 0.5
+              },
+              {
+                "x": 0.0,
+                "y": 0.5
+              },
+              {
+                "x": 0.0,
+                "y": 0.625
+              }
+            ]
+          },
+          "uid": 11
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 384.0,
+        "y": 704.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 12,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "Assets.Components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/croppedpokemontileset.png",
+              "texID": 2,
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.125,
+                "y": 0.625
+              },
+              {
+                "x": 0.125,
+                "y": 0.5
+              },
+              {
+                "x": 0.0625,
+                "y": 0.5
+              },
+              {
+                "x": 0.0625,
+                "y": 0.625
+              }
+            ]
+          },
+          "uid": 12
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 448.0,
+        "y": 704.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 13,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "Assets.Components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/croppedpokemontileset.png",
+              "texID": 2,
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.6875,
+                "y": 0.5
+              },
+              {
+                "x": 0.6875,
+                "y": 0.375
+              },
+              {
+                "x": 0.625,
+                "y": 0.375
+              },
+              {
+                "x": 0.625,
+                "y": 0.5
+              }
+            ]
+          },
+          "uid": 13
         }
       }
     ],
@@ -485,11 +713,11 @@
     "zIndex": 0
   },
   {
-    "uid": 10,
+    "uid": 14,
     "name": "Sprite_Object_Gen",
     "components": [
       {
-        "type": "Gamengine.Components.SpriteRenderer",
+        "type": "Assets.Components.SpriteRenderer",
         "properties": {
           "color": {
             "x": 1.0,
@@ -508,24 +736,24 @@
             },
             "texCoords": [
               {
-                "x": 0.375,
-                "y": 0.25
+                "x": 0.75,
+                "y": 0.5
               },
               {
-                "x": 0.375,
-                "y": 0.125
+                "x": 0.75,
+                "y": 0.375
               },
               {
-                "x": 0.3125,
-                "y": 0.125
+                "x": 0.6875,
+                "y": 0.375
               },
               {
-                "x": 0.3125,
-                "y": 0.25
+                "x": 0.6875,
+                "y": 0.5
               }
             ]
           },
-          "uid": 10
+          "uid": 14
         }
       }
     ],
@@ -542,11 +770,11 @@
     "zIndex": 0
   },
   {
-    "uid": 11,
+    "uid": 15,
     "name": "Sprite_Object_Gen",
     "components": [
       {
-        "type": "Gamengine.Components.SpriteRenderer",
+        "type": "Assets.Components.SpriteRenderer",
         "properties": {
           "color": {
             "x": 1.0,
@@ -565,24 +793,81 @@
             },
             "texCoords": [
               {
-                "x": 0.375,
-                "y": 0.125
+                "x": 0.6875,
+                "y": 0.375
               },
               {
-                "x": 0.375,
-                "y": 0.0
+                "x": 0.6875,
+                "y": 0.25
               },
               {
-                "x": 0.3125,
-                "y": 0.0
+                "x": 0.625,
+                "y": 0.25
               },
               {
-                "x": 0.3125,
-                "y": 0.125
+                "x": 0.625,
+                "y": 0.375
               }
             ]
           },
-          "uid": 11
+          "uid": 15
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 640.0,
+        "y": 384.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 16,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "Assets.Components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/croppedpokemontileset.png",
+              "texID": 2,
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.75,
+                "y": 0.375
+              },
+              {
+                "x": 0.75,
+                "y": 0.25
+              },
+              {
+                "x": 0.6875,
+                "y": 0.25
+              },
+              {
+                "x": 0.6875,
+                "y": 0.375
+              }
+            ]
+          },
+          "uid": 16
         }
       }
     ],
@@ -599,296 +884,11 @@
     "zIndex": 0
   },
   {
-    "uid": 12,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "Gamengine.Components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/images/croppedpokemontileset.png",
-              "texID": 2,
-              "width": 256,
-              "height": 128
-            },
-            "texCoords": [
-              {
-                "x": 0.125,
-                "y": 1.0
-              },
-              {
-                "x": 0.125,
-                "y": 0.875
-              },
-              {
-                "x": 0.0625,
-                "y": 0.875
-              },
-              {
-                "x": 0.0625,
-                "y": 1.0
-              }
-            ]
-          },
-          "uid": 12
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 512.0,
-        "y": 768.0
-      },
-      "scale": {
-        "x": 64.0,
-        "y": 64.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 13,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "Gamengine.Components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/images/croppedpokemontileset.png",
-              "texID": 2,
-              "width": 256,
-              "height": 128
-            },
-            "texCoords": [
-              {
-                "x": 0.1875,
-                "y": 1.0
-              },
-              {
-                "x": 0.1875,
-                "y": 0.875
-              },
-              {
-                "x": 0.125,
-                "y": 0.875
-              },
-              {
-                "x": 0.125,
-                "y": 1.0
-              }
-            ]
-          },
-          "uid": 13
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 576.0,
-        "y": 768.0
-      },
-      "scale": {
-        "x": 64.0,
-        "y": 64.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 14,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "Gamengine.Components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/images/croppedpokemontileset.png",
-              "texID": 2,
-              "width": 256,
-              "height": 128
-            },
-            "texCoords": [
-              {
-                "x": 0.1875,
-                "y": 1.0
-              },
-              {
-                "x": 0.1875,
-                "y": 0.875
-              },
-              {
-                "x": 0.125,
-                "y": 0.875
-              },
-              {
-                "x": 0.125,
-                "y": 1.0
-              }
-            ]
-          },
-          "uid": 14
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 640.0,
-        "y": 768.0
-      },
-      "scale": {
-        "x": 64.0,
-        "y": 64.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 15,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "Gamengine.Components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/images/croppedpokemontileset.png",
-              "texID": 2,
-              "width": 256,
-              "height": 128
-            },
-            "texCoords": [
-              {
-                "x": 0.3125,
-                "y": 1.0
-              },
-              {
-                "x": 0.3125,
-                "y": 0.875
-              },
-              {
-                "x": 0.25,
-                "y": 0.875
-              },
-              {
-                "x": 0.25,
-                "y": 1.0
-              }
-            ]
-          },
-          "uid": 15
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 704.0,
-        "y": 768.0
-      },
-      "scale": {
-        "x": 64.0,
-        "y": 64.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 16,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "Gamengine.Components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/images/croppedpokemontileset.png",
-              "texID": 2,
-              "width": 256,
-              "height": 128
-            },
-            "texCoords": [
-              {
-                "x": 0.8125,
-                "y": 0.25
-              },
-              {
-                "x": 0.8125,
-                "y": 0.125
-              },
-              {
-                "x": 0.75,
-                "y": 0.125
-              },
-              {
-                "x": 0.75,
-                "y": 0.25
-              }
-            ]
-          },
-          "uid": 16
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 640.0,
-        "y": 832.0
-      },
-      "scale": {
-        "x": 64.0,
-        "y": 64.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
     "uid": 17,
     "name": "Sprite_Object_Gen",
     "components": [
       {
-        "type": "Gamengine.Components.SpriteRenderer",
+        "type": "Assets.Components.SpriteRenderer",
         "properties": {
           "color": {
             "x": 1.0,
@@ -907,20 +907,20 @@
             },
             "texCoords": [
               {
-                "x": 0.875,
-                "y": 0.25
+                "x": 0.3125,
+                "y": 0.5
               },
               {
-                "x": 0.875,
-                "y": 0.125
+                "x": 0.3125,
+                "y": 0.375
               },
               {
-                "x": 0.8125,
-                "y": 0.125
+                "x": 0.25,
+                "y": 0.375
               },
               {
-                "x": 0.8125,
-                "y": 0.25
+                "x": 0.25,
+                "y": 0.5
               }
             ]
           },
@@ -930,8 +930,8 @@
     ],
     "transform": {
       "position": {
-        "x": 576.0,
-        "y": 832.0
+        "x": 832.0,
+        "y": 448.0
       },
       "scale": {
         "x": 64.0,
@@ -945,7 +945,7 @@
     "name": "Sprite_Object_Gen",
     "components": [
       {
-        "type": "Gamengine.Components.SpriteRenderer",
+        "type": "Assets.Components.SpriteRenderer",
         "properties": {
           "color": {
             "x": 1.0,
@@ -964,20 +964,20 @@
             },
             "texCoords": [
               {
-                "x": 0.75,
-                "y": 0.125
+                "x": 0.375,
+                "y": 0.5
               },
               {
-                "x": 0.75,
-                "y": 0.0
+                "x": 0.375,
+                "y": 0.375
               },
               {
-                "x": 0.6875,
-                "y": 0.0
+                "x": 0.3125,
+                "y": 0.375
               },
               {
-                "x": 0.6875,
-                "y": 0.125
+                "x": 0.3125,
+                "y": 0.5
               }
             ]
           },
@@ -987,8 +987,122 @@
     ],
     "transform": {
       "position": {
-        "x": 512.0,
-        "y": 832.0
+        "x": 896.0,
+        "y": 448.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 19,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "Assets.Components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/croppedpokemontileset.png",
+              "texID": 2,
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.3125,
+                "y": 0.375
+              },
+              {
+                "x": 0.3125,
+                "y": 0.25
+              },
+              {
+                "x": 0.25,
+                "y": 0.25
+              },
+              {
+                "x": 0.25,
+                "y": 0.375
+              }
+            ]
+          },
+          "uid": 19
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 832.0,
+        "y": 384.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 20,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "Assets.Components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/croppedpokemontileset.png",
+              "texID": 2,
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.375,
+                "y": 0.375
+              },
+              {
+                "x": 0.375,
+                "y": 0.25
+              },
+              {
+                "x": 0.3125,
+                "y": 0.25
+              },
+              {
+                "x": 0.3125,
+                "y": 0.375
+              }
+            ]
+          },
+          "uid": 20
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 896.0,
+        "y": 384.0
       },
       "scale": {
         "x": 64.0,

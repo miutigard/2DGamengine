@@ -1,8 +1,7 @@
 package Gamengine.Gamerun;
 
-import Gamengine.Components.GridLines;
-import Gamengine.Components.MouseControls;
-import org.joml.Vector2f;
+import Assets.Components.GridLines;
+import Gamengine.LevelDesign.LevelEditorScene;
 
 public class GameRun {
 
@@ -22,8 +21,9 @@ public class GameRun {
         GridLines.setGrid_width(64);
 
         //Getting the window and running it
-        Window.get().run();
-
+        Window.setCurrentScene(new LevelEditorScene());
+        Window window = Window.get();
+        window.run();
     }
 
     public static GameRun getInstance() {

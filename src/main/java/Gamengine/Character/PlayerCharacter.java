@@ -1,12 +1,11 @@
 package Gamengine.Character;
 
-import Gamengine.Components.Sprite;
-import Gamengine.Components.SpriteRenderer;
-import Gamengine.Gamerun.AssetPool;
-import Gamengine.Gamerun.GameObject;
-import Gamengine.Gamerun.Transform;
+import Assets.Components.Sprite;
+import Assets.Components.SpriteRenderer;
+import Assets.GamerunTools.Assets;
+import Assets.GamerunTools.GameObject;
+import Assets.GamerunTools.Transform;
 import Gamengine.Gamerun.Window;
-import org.joml.Vector2f;
 
 public class PlayerCharacter {
 
@@ -25,6 +24,6 @@ public class PlayerCharacter {
         }
 
     public static void setPlayercharSprite(String Texture) {
-        playercharSprite.setTexture(AssetPool.getTexture(Texture));
+        playercharSprite.setTexture(Assets.getTexture(Texture));
     }
 }
