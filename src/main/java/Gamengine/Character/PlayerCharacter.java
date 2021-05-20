@@ -1,89 +1,30 @@
 package Gamengine.Character;
 
-public class PlayerCharacter extends Characters{
+import Gamengine.Components.Sprite;
+import Gamengine.Components.SpriteRenderer;
+import Gamengine.Gamerun.AssetPool;
+import Gamengine.Gamerun.GameObject;
+import Gamengine.Gamerun.Transform;
+import Gamengine.Gamerun.Window;
+import org.joml.Vector2f;
 
-    String moveUpKey, moveDownKey, moveRightKey, moveLeftKey, attackKey, interactKey;
+public class PlayerCharacter {
 
-    public PlayerCharacter() { }
+        private static final PlayerCharacter instance = new PlayerCharacter();
+        private static final Sprite playercharSprite = new Sprite();
 
-    public PlayerCharacter(String name, int hitPoints, int attack, int defence) {
-        super(name, hitPoints, attack, defence);
-    }
+            public static void createPlayerChar(String name, Transform transform, int zIndex) {
+            GameObject playerchar = new GameObject(name, transform, zIndex);
 
-    public String getMoveUpKey() {
-        return moveUpKey;
-    }
+            SpriteRenderer playercharSpriteRenderer = new SpriteRenderer();
+            playercharSpriteRenderer.setSprite(playercharSprite);
 
-    public void setMoveUpKey(String moveUpKey) {
-        this.moveUpKey = moveUpKey;
-    }
+            playerchar.addComponent(playercharSpriteRenderer);
+            Window.getScene().addGameObjectToScene(playerchar);
+            Window.getScene().setCurrentGameObject(playerchar);
+        }
 
-    public String getMoveDownKey() {
-        return moveDownKey;
-    }
-
-    public void setMoveDownKey(String moveDownKey) {
-        this.moveDownKey = moveDownKey;
-    }
-
-    public String getMoveRightKey() {
-        return moveRightKey;
-    }
-
-    public void setMoveRightKey(String moveRightKey) {
-        this.moveRightKey = moveRightKey;
-    }
-
-    public String getMoveLeftKey() {
-        return moveLeftKey;
-    }
-
-    public void setMoveLeftKey(String moveLeftKey) {
-        this.moveLeftKey = moveLeftKey;
-    }
-
-    public String getAttackKey() {
-        return attackKey;
-    }
-
-    public void setAttackKey(String attackKey) {
-        this.attackKey = attackKey;
-    }
-
-    public String getInteractKey() {
-        return interactKey;
-    }
-
-    public void setInteractKey(String interactKey) {
-        this.interactKey = interactKey;
-    }
-
-    //Methods
-
-    //Move player character methods
-    public void moveUp() {
-
-    }
-
-    public void moveDown() {
-
-    }
-
-    public void moveRight() {
-
-    }
-
-    public void moveLeft() {
-
-    }
-
-    //Attack with player character
-    public void attack() {
-
-    }
-
-    @Override
-    public String toString() {
-        return "Name: " + getName() + ", HitPoints: " + getHitPoints() + ", Attack: " + getAttack() + ", Defence: " + getDefence();
+    public static void setPlayercharSprite(String Texture) {
+        playercharSprite.setTexture(AssetPool.getTexture(Texture));
     }
 }

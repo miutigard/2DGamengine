@@ -21,7 +21,7 @@ import imgui.gl3.ImGuiImplGl3;
 
 public class imGuiGlfw {
 
-    private long windowPtr;
+    private final long windowPtr;
 
     // Mouse cursors provided by GLFW
     private final long[] mouseCursors = new long[ImGuiMouseCursor.COUNT];

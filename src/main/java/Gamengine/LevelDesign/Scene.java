@@ -7,6 +7,7 @@ import Gamengine.Renderer.Renderer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import imgui.ImGui;
+import org.joml.Vector2f;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -29,7 +30,6 @@ public abstract class Scene {
     }
 
     public void init() {
-
     }
 
     public void start() {
@@ -57,11 +57,7 @@ public abstract class Scene {
     }
 
     public void sceneImgui() {
-        if (currentGameObject != null) {
-            ImGui.begin("Inspector");
-            currentGameObject.imgui();
-            ImGui.end();
-        }
+
         imgui();
     }
 
@@ -122,5 +118,17 @@ public abstract class Scene {
             Component.init(maxCompID);
             this.levelLoaded = true;
         }
+    }
+
+    public List<GameObject> getGameObjects() {
+        return gameObjects;
+    }
+
+    public void setCurrentGameObject(GameObject currentGameObject) {
+        this.currentGameObject = currentGameObject;
+    }
+
+    public boolean isLevelLoaded() {
+        return levelLoaded;
     }
 }

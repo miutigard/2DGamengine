@@ -3,23 +3,17 @@ package Gamengine.LevelDesign;
 import Gamengine.Character.PlayerCharacter;
 import Gamengine.Components.*;
 import Gamengine.Gamerun.*;
-import Gamengine.Renderer.DebugDraw;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import imgui.ImGui;
 import imgui.ImVec2;
 import org.joml.Vector2f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
 
 import static org.lwjgl.glfw.GLFW.*;
 
 public class LevelEditorScene extends Scene {
 
-    private Spritesheet sprites, sprites2;
-    private GameObject obj1;
+    private Spritesheet sprites;
 
-    GameObject levelEditorTmp = new GameObject("Level Editor", new Transform(new Vector2f()), 0);
+    GameObject grid = new GameObject("Grid", new Transform(new Vector2f()), 0);
 
     public LevelEditorScene() {
 
@@ -27,28 +21,28 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void init() {
-        levelEditorTmp.addComponent(new MouseControls());
-        levelEditorTmp.addComponent(new GridLines());
 
+
+        // loading the spritesheet and shader resources
         loadResources();
-        this.camera = new Camera(new Vector2f());
         sprites = AssetPool.getSpritesheet("assets/images/croppedpokemontileset.png");
-        sprites2 = AssetPool.getSpritesheet("assets/images/spritesheet2.png");
 
-        if(levelLoaded) {
+        // creating the camera
+        this.camera = new Camera(new Vector2f());
+
+        if (levelLoaded) {
             if (gameObjects.size() <= 0) return;
-            this.currentGameObject = gameObjects.get(0);
+            this.currentGameObject = gameObjects.get(1);    //since the playerchar is the second gameobject created in the init() it will be 1 in the list of gameobjects
             return;
         }
+        // adding a grid to the level editor
+        grid.addComponent(new MouseControls());
+        grid.addComponent(new GridLines());
+        gameObjects.add(grid);
 
-        GameObject playerchar = new GameObject("Playerchar",
-                new Transform(new Vector2f(100, 100), new Vector2f(128, 128)), 3);
-        SpriteRenderer playercharSpriteRenderer = new SpriteRenderer();
-        playercharSpriteRenderer.setSprite(sprites2.getSprite(0));
-        playerchar.addComponent(playercharSpriteRenderer);
-        this.addGameObjectToScene(playerchar);
-        this.currentGameObject = playerchar;
-
+        // adding a playable character
+        PlayerCharacter.setPlayercharSprite("assets/images/testImage.png");
+        PlayerCharacter.createPlayerChar("Player character", new Transform(new Vector2f(100, 100), new Vector2f(128, 128)), 3);
     }
 
     private void loadResources() {
@@ -58,16 +52,16 @@ public class LevelEditorScene extends Scene {
                 new Spritesheet(AssetPool.getTexture("assets/images/croppedpokemontileset.png"),
                         16, 16, 128, 0));
 
-        AssetPool.addSpritesheet("assets/images/spritesheet2.png",
-                new Spritesheet(AssetPool.getTexture("assets/images/spritesheet2.png"),
-                        64, 64, 151, 0));
+        AssetPool.addSpritesheet("assets/images/testImage.png",
+                new Spritesheet(AssetPool.getTexture("assets/images/testImage.png"),
+                        32, 32, 1, 0));
     }
 
     @Override
     public void update(float dt) {
         //System.out.println("FPS: " + (1.0F / dt));
-        levelEditorTmp.update(dt);
 
+        //Move the currentGameObject which is the playercharacter
         if (KeyListener.isKeyPressed(GLFW_KEY_D)) {
             currentGameObject.transform.position.x += 300f * dt;
         } else if (KeyListener.isKeyPressed(GLFW_KEY_A)) {
@@ -79,6 +73,13 @@ public class LevelEditorScene extends Scene {
             currentGameObject.transform.position.y -= 300f * dt;
         }
 
+
+        if (KeyListener.isKeyPressed(GLFW_KEY_1)) {
+            save();
+            Window.changeScene(1);
+        }
+
+
         for (GameObject go : this.gameObjects) {
             go.update(dt);
         }
@@ -88,8 +89,11 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void imgui() {
+        // Creates a widget for the spritesheet in sprites ("assets/images/croppedpokemontiles.png)
+        // To change to own spritesheet change
         ImGui.begin("Pokemon tiles");
 
+        // Code from ImGui library
         ImVec2 windowPos = new ImVec2();
         ImGui.getWindowPos(windowPos);
         ImVec2 windowSize = new ImVec2();
@@ -98,17 +102,17 @@ public class LevelEditorScene extends Scene {
         ImGui.getStyle().getItemSpacing(itemSpacing);
 
         float windowX2 = windowPos.x + windowSize.x;
-        for (int i = 0; i < sprites.size(); i++) {
+        for (int i = 0; i < sprites.size(); i++) {          //sprites is the spritesheet you want to use
             Sprite sprite = sprites.getSprite(i);
-            float spriteWidth = sprite.getWidth() * 2 ;
-            float spriteHeight = sprite.getHeight() * 2;
+            float spriteWidth = sprite.getWidth() * 2;     //the width of the icons in the widget
+            float spriteHeight = sprite.getHeight() * 2;    //the height of the icons in the widget
             int id = sprite.getTexId();
             Vector2f[] texCoords = sprite.getTexCoords();
 
             ImGui.pushID(i);
             if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
-                GameObject object = Prefabs.generateSpriteObject(sprite, 64, 64);
-                levelEditorTmp.getComponent(MouseControls.class).pickupObject(object);
+                GameObject object = Prefabs.generateSpriteObject(sprite, 64, 64);           //64x64 is the size of the object when picked up or placed into the game world (can be changed to what you want)
+                gameObjects.get(0).getComponent(MouseControls.class).pickupObject(object);              //gameObjects.get(0) will be the grid gameObject since it was the first one created in the init()
             }
             ImGui.popID();
 
@@ -123,5 +127,4 @@ public class LevelEditorScene extends Scene {
         }
         ImGui.end();
     }
-
 }

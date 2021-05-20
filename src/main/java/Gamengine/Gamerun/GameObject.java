@@ -9,10 +9,10 @@ public class GameObject {
     private static int ID_COUNTER = 0;
     private int uid = -1;
 
-    private String name;
-    private List<Component> components;
+    private final String name;
+    private final List<Component> components;
     public Transform transform;
-    private int zIndex;
+    private final int zIndex;
 
     public GameObject(String name, Transform transform, int zIndex) {
         this.name = name;

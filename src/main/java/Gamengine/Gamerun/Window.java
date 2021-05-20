@@ -22,6 +22,7 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window {
     int width, height;
+    private static int windowWidth, windowHeight;
     String title;
     private long glfwWindow;
     private imGuiGlfw imGuiGlfw;
@@ -43,18 +44,14 @@ public class Window {
     }
 
     public static void changeScene(int newScene) {
-        switch (newScene) {
-            case 0:
-                currentScene = new LevelEditorScene();
-                break;
-            case 1:
-                currentScene = new LevelScene();
-                break;
-            default:
-                assert false : "Unknown scene '" + newScene + "'";
-                break;
-        }
 
+        if (newScene==0) {
+            currentScene = new LevelEditorScene();
+        } else if (newScene==1) {
+            currentScene = new LevelScene();
+        } else {
+            System.out.println("unknown scene");
+        }
         currentScene.load();
         currentScene.init();
         currentScene.start();
@@ -62,7 +59,7 @@ public class Window {
 
     public static Window get() {
         if (Window.window == null) {
-            Window.window = new Window(1680, 980);
+            Window.window = new Window(windowWidth, windowHeight);
         }
 
         return Window.window;
@@ -212,4 +209,11 @@ public class Window {
         get().height = newHeight;
     }
 
+    public static void setWindowWidth(int windowWidth) {
+        Window.windowWidth = windowWidth;
+    }
+
+    public static void setWindowHeight(int windowHeight) {
+        Window.windowHeight = windowHeight;
+    }
 }
