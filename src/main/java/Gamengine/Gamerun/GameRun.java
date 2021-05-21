@@ -6,7 +6,7 @@ public class GameRun {
 
     private static final GameRun instance = new GameRun();
 
-    private GameRun() {
+    public GameRun() {
 
     }
 

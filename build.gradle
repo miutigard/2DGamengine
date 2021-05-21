@@ -4,19 +4,15 @@ plugins {
 
 version '1.0-SNAPSHOT'
 
+task myJavadocs(type: Javadoc) {
+    source = sourceSets.main.allJava
+}
+
 repositories {
     jcenter()
     mavenCentral()
 }
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-}
-
-test {
-    useJUnitPlatform()
-}
 
 project.ext.lwjglVersion = "3.2.3"
 project.ext.jomlVersion = "1.10.1"
@@ -24,6 +20,9 @@ project.ext.lwjglNatives = "natives-windows"
 project.ext.imguiVersion = '1.76-0.9'
 
 dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
     implementation 'com.google.code.gson:gson:2.8.6'
 
     implementation "io.imgui.java:binding:$imguiVersion"
@@ -48,4 +47,8 @@ dependencies {
     runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
     implementation "org.joml:joml:${jomlVersion}"
+}
+
+test {
+    useJUnitPlatform()
 }
